@@ -1,5 +1,9 @@
 # flutter-skills-example
 
+[![CI](https://github.com/gabuldev/flutter-skills-example/actions/workflows/ci.yaml/badge.svg)](https://github.com/gabuldev/flutter-skills-example/actions/workflows/ci.yaml)
+[![Flutter](https://img.shields.io/badge/Flutter-3.38.4-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A small, complete Flutter app built with the conventions in
 [**flutter-skills**](https://github.com/gabuldev/flutter-skills).
 

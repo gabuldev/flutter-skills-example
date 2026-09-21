@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly, so we find out that a new Flutter broke this before a reader does.
+    - cron: '0 6 * * 1'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The version this repo is pinned to and developed against.
+          - flutter: 3.38.4
+            name: pinned
+          # Latest stable: allowed to fail without blocking a PR, but it tells
+          # us the day an SDK release breaks the example.
+          - flutter: stable
+            name: stable
+    name: verify (${{ matrix.name }})
+    continue-on-error: ${{ matrix.name == 'stable' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ matrix.flutter }}
+          channel: stable
+          cache: true
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Verify formatting
+        run: dart format . --set-exit-if-changed
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test app_core
+        working-directory: packages/app_core
+        run: flutter test
+
+      - name: Test agenda
+        working-directory: apps/agenda
+        run: flutter test
+
+      - name: Build web
+        working-directory: apps/agenda
+        run: flutter build web --release --dart-define=BASE_URL=https://api.example.com

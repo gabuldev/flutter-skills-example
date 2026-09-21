@@ -1,0 +1,16 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Promoted: violating these ships a bug, not a style nit.
+    use_build_context_synchronously: error
+    unawaited_futures: error
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    - prefer_final_locals
+    - avoid_print
+    - unawaited_futures

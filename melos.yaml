@@ -1,0 +1,23 @@
+name: flutter_skills_example
+
+packages:
+  - packages/**
+  - apps/**
+
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.10.0
+
+scripts:
+  analyze:
+    run: melos exec -- flutter analyze
+    description: Analyze every package.
+
+  format:
+    run: melos exec -- dart format . --set-exit-if-changed
+    description: Check formatting across every package.
+
+  test:
+    run: melos exec --dir-exists=test -- flutter test
+    description: Run the tests of every package that has any.

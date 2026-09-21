@@ -1,0 +1,14 @@
+name: flutter_skills_example
+description: Reference app for the flutter-skills conventions.
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+workspace:
+  - packages/design_system
+  - packages/app_core
+  - apps/agenda
+
+dev_dependencies:
+  flutter_lints: ^6.0.0

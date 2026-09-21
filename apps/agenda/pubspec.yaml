@@ -1,0 +1,30 @@
+name: agenda
+description: Appointment scheduling app - the reference implementation.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  app_core:
+    path: ../../packages/app_core
+  design_system:
+    path: ../../packages/design_system
+  dio: ^5.7.0
+  flutter_bloc: ^9.0.0
+  flutter_injections: ^1.1.2
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.4
+
+flutter:
+  uses-material-design: true
